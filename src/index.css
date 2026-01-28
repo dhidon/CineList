@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: rgb(1, 1, 61);
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+hr {
+    margin-bottom: 4px;
+}
+
+h2 {
+    margin: 14px 0;
+}
+
+h3 {
+    margin-top: 14px;
+}

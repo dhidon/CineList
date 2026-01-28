@@ -1,0 +1,78 @@
+.meus-filmes{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px
+}
+
+.favoritos-cover{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* height: 60px; */
+    width: 100%;
+    margin-bottom: 30px
+}
+
+.meus-filmes h1{
+    margin-bottom: 20px
+}
+
+.favoritos-cover article{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.favoritos-cover img{
+    height: 40px;
+    object-fit: cover
+}
+
+ul{
+    width: 100%
+}
+
+li {
+    list-style: none
+}
+
+.favoritos-buttons{
+    display: flex;
+    align-items: space-between;
+    gap: 10px
+}
+
+/*
+.meus-filmes h1{
+    margin-bottom: 14px;
+}
+
+.meus-filmes span{
+    font-size: 18px
+}
+
+.meus-filmes ul{
+    width: 720px
+}
+
+.meus-filmes ul li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px
+}
+
+.meus-filmes div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meus-filmes div a{
+    text-decoration: none;
+    color: #116feb;
+    margin-right: 14px
+} */
