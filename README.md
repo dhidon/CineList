@@ -24,4 +24,4 @@ root
 * Agora é só rodar o site com `npm run dev`
 
 ---
-## Screenshots# CineList
+## Screenshots#
