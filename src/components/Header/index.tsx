@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import { useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
-import { options } from '../../pages/Home'
+import { options } from "../../services/api"
 import { useNavigate } from 'react-router-dom'
 
 type TokenType = {

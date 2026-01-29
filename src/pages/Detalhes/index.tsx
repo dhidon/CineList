@@ -3,9 +3,11 @@ import { useParams, useNavigate } from "react-router-dom"
 import api from "../../services/api"
 import './detalhes.css'
 import { toast } from "react-toastify"
-import { options } from "../Home"
+import { options } from "../../services/api"
 import CastingPeek from "../../components/CastPeek"
 import { BsStarFill } from "react-icons/bs"
+import { Swiper, SwiperSlide } from 'swiper/react'
+// import Carrossel from "../../components/Carrossel"
 
 type DetailsType = {
     backdrop_path: string,
@@ -41,6 +43,9 @@ export type CastingType = {
     title: string
 }
 
+export type ImagesType ={
+    file_path: string
+}
 
 export default function Filmes(){
     const { id } = useParams()
@@ -48,6 +53,7 @@ export default function Filmes(){
     const [movie, setMovie] = useState<DetailsType | null>(null)
     const [loading, setLoading] = useState(true)
     const [casting, setCasting] = useState<CastingType[]>([])
+    const [images, setImages] = useState<ImagesType[] | null>(null)
 
     useEffect(() => {
         async function loadFilme(){
@@ -72,9 +78,17 @@ export default function Filmes(){
                 console.log(e)
             })
         }
+
+        async function loadIamges(){
+            await api.get(`/movie/${id}/images`, options)
+            .then((response) => {
+                setImages(response.data.backdrops)
+            })
+        }
     
         loadCast()
         loadFilme()
+        loadIamges()
     }, [])
 
     function salvarFilme(){
@@ -118,7 +132,19 @@ export default function Filmes(){
                     <hr/>
                     <h2>{movie?.tagline}</h2>
 
-                    <img src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path ? movie?.backdrop_path : movie?.poster_path}`} alt={movie?.title}/>
+                    { 
+                        images?.length === 0
+                        ? <img src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title}/>
+                        : <Swiper spaceBetween={10} slidesPerView={1} className='images'>
+                            {images?.map((image) => (
+                                <SwiperSlide key={image.file_path}>
+                                    <img src={`https://image.tmdb.org/t/p/original/${image.file_path}`} alt='carrossel'/>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    }
+                    
+
                     <div className='under-img'>
                         <div className='tags'>
                             {movie?.genres.map((item) => <p key={item.name}>{item.name}</p>)}

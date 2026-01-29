@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import api from "../../services/api"
 import './home.css'
 import MoviesPeek from "../../components/MoviesPeek"
+import { options } from "../../services/api"
 
 
 export type MovieType = {
@@ -13,23 +14,13 @@ export type MovieType = {
     vote_average: number
 }
 
-type OptionsType = {
+export type OptionsType = {
     params: {
         api_key: string,
         language: string,
         page: number,
         region: string,
         sort_by: string
-    }
-}
-
-export const options: OptionsType = {
-    params: {
-        api_key: '2c55f7bc797cf3b221baf416c44510f4',
-        language: 'pt-BR',
-        page: 1,
-        region: 'BR',
-        sort_by: 'popularity'
     }
 }
 
