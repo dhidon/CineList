@@ -1,12 +1,13 @@
 import { useState } from "react"
 import type { ImagesType } from "../../pages/Detalhes"
+import './carrossel.css'
 
 type Props = {
     images: ImagesType[],
-    className: string
+
 }
 
-export default function Carrossel({className, images}: Props){
+export default function Carrossel({images}: Props){
     const [index, setIndex] = useState(0)
 
     function prev(){
@@ -18,7 +19,7 @@ export default function Carrossel({className, images}: Props){
     }
 
     return(
-        <div className={className ?? ''}>
+        <div className='carrossel'>
             <button onClick={prev}>◀</button>
 
             <img src={`https://image.tmdb.org/t/p/original/${images[index].file_path}`} alt='carrossel'/>

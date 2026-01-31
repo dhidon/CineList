@@ -1,0 +1,19 @@
+.carrossel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 850px
+}
+
+.carrossel img{
+    width: 95%;
+    border-radius: 10px;
+}
+
+.carrossel button{
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}

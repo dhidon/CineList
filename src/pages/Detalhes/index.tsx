@@ -6,8 +6,8 @@ import { toast } from "react-toastify"
 import { options } from "../../services/api"
 import CastingPeek from "../../components/CastPeek"
 import { BsStarFill } from "react-icons/bs"
-import { Swiper, SwiperSlide } from 'swiper/react'
-// import Carrossel from "../../components/Carrossel"
+// import { Swiper, SwiperSlide } from 'swiper/react'
+import Carrossel from "../../components/Carrossel"
 
 type DetailsType = {
     backdrop_path: string,
@@ -82,8 +82,9 @@ export default function Filmes(){
         async function loadIamges(){
             await api.get(`/movie/${id}/images`, options)
             .then((response) => {
-                setImages(response.data.backdrops)
+                console.log(response.data.backdrops)
             })
+            .catch((e) => console.log(e))
         }
     
         loadCast()
@@ -133,17 +134,18 @@ export default function Filmes(){
                     <h2>{movie?.tagline}</h2>
 
                     { 
-                        images?.length === 0
+                        images?.length === 0 || !images
                         ? <img src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title}/>
-                        : <Swiper spaceBetween={10} slidesPerView={1} className='images'>
-                            {images?.map((image) => (
-                                <SwiperSlide key={image.file_path}>
-                                    <img src={`https://image.tmdb.org/t/p/original/${image.file_path}`} alt='carrossel'/>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                    //     : <Swiper spaceBetween={10} slidesPerView={1} className='images'>
+                    //         {images?.map((image) => (
+                    //             <SwiperSlide key={image.file_path}>
+                    //                 <img src={`https://image.tmdb.org/t/p/original/${image.file_path}`} alt='carrossel'/>
+                    //             </SwiperSlide>
+                    //         ))}
+                    //     </Swiper>
+                    // }
+                        : <Carrossel images={images ?? []}/>
                     }
-                    
 
                     <div className='under-img'>
                         <div className='tags'>
@@ -172,9 +174,7 @@ export default function Filmes(){
                     <p>Produzido por: {movie?.production_companies.map((item) => <span>{item.name}, </span>)}</p>
                     <p>Arrecadação: {bilheteria}</p>
                     <br/>
-                    <a target='blank' rel='external' href={movie?.homepage} className='detalhes'>Clique aqui para mais detalhes</a>
-
-                    
+                    {movie?.homepage && <a target='blank' rel='external' href={movie?.homepage} className='detalhes'>Clique aqui para mais detalhes</a>}
                 </div>
 
                 <div className='casting-area'>
