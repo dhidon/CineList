@@ -83,6 +83,7 @@ export default function Filmes(){
             await api.get(`/movie/${id}/images`, options)
             .then((response) => {
                 setImages(response.data.backdrops)
+                console.log(response.data.backdrops)
             })
             .catch((e) => console.log(e))
         }
