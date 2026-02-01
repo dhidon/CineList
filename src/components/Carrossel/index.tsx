@@ -18,6 +18,8 @@ export default function Carrossel({images}: Props){
         setIndex(prev => (prev + 1) % images.length)
     }
 
+    if(images.length === 0) return null
+
     return(
         <div className='carrossel'>
             <button onClick={prev}>◀</button>
